@@ -1,24 +1,24 @@
 ---
 title: OnPlayerConnect
-description: Callback ini akan terpangil ketika pemain terhubung kedalam server.
+description: Callback ini terpanggil ketika pemain join kedalam server.
 tags: ["player"]
 ---
 
 ## Deskripsi
 
-Callback ini akan terpanggil ketika pemain terhubung kedalam server.
+Callback ini akan terpanggil ketika pemain join kedalam server
 
-| Nama     | Deskripsi                       |
-| -------- | ------------------------------- |
-| playerid | ID dari pemain yang terkoneksi. |
+| Nama     | Deskripsi                         |
+| -------- | --------------------------------  |
+| playerid | ID pemain yang connect ke server. |
 
 ## Returns
 
-0 - Akan melarang filterscript lain untuk menerima callback ini.
+0 - Akan menutup akses filterscript menggunakan callback ini.
 
-1 - Mengindikasikan bahwa callback ini akan dilanjutkan ke filtercript lain.
+1 - Memberi akses ke filterscript untuk menggunakan callback ini.
 
-Selalu terpanggil pertama di filterscripts.
+Dalam filterscripts, callback ini akan selalu terpanggil untuk pertama kali.
 
 ## Contoh
 
@@ -27,7 +27,7 @@ public OnPlayerConnect(playerid)
 {
     new string[64], pName[MAX_PLAYER_NAME];
     GetPlayerName(playerid, pName, MAX_PLAYER_NAME);
-    format(string, sizeof string, "%s telah terkoneksi kedalam server, selamat datang!", pName);
+    format(string, sizeof string, "%s telah join kedalam server, selamat datang!", pName);
     SendClientMessageToAll(0xFFFFFFAA, string);
     return 1;
 }
@@ -37,7 +37,7 @@ public OnPlayerConnect(playerid)
 
 :::tip
 
-Callback ini akan terpanggil juga oleh NPC.
+Callback ini juga bisa terpanggil untuk NPC.
 
 :::
 
